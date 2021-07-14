@@ -23,6 +23,7 @@ class PostFactory extends Factory
     {
         return [
             'category_id' => \App\Models\Category::factory(),
+            'user_id'=> \App\Models\User::factory(),
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(),
