@@ -3,10 +3,35 @@ body {
     margin: auto;
     background-color: white;
     color: #222;
+    font-family: sans-serif;
 }
 
 article {
     margin-bottom: 25px;
     padding-bottom: 25px;
     border-bottom: 1px solid #222;
+}
+
+header {
+    padding: 15px 0 15px 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    display:flex;
+    list-style: none;
+}
+
+header nav ul li{
+    margin: 10px;
+}
+
+.brand {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3em;
 }
