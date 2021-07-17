@@ -1,8 +1,15 @@
 <!DOCTYPE HTML>
 <!--
+DISEÑO:
  Phantom by HTML5 UP
  html5up.net | @ajlkn
  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+Desarrollo:
+ Este componente es el layout principal. Se ocupa de la etiqueta head, del body
+ con un whrapper y de un footer, así como el menú del botón hamburguesa.
+
+ El slot está colocado entre el menú offscreen del botón hamburguesa y el footer.
 -->
 <html>
 

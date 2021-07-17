@@ -1,6 +1,15 @@
+<!-- Página de categoría
+ Utiliza el layout principal y en el slot inserta:
+
+    * Header principal
+    * Wrapper formado por dos divs con las clases main e inner
+    * H1 con el título de la página (nombre del post individual)
+    * un div info con los datos del usuario
+    * El contenido del post, sin escapar -->
+
 <x-layout>
 
-    <x-interior-header />
+    <x-main-header />
 
     <div id="main">
         <div class="inner">
@@ -12,7 +21,7 @@
                     en <a href="{{ '/category/' . $post->category->slug }}">{{ $post->category->name }}</a>
                 </div>
                 <div>
-                    {!! $post->content !!}
+                    {!! $post->content !!} {{-- Si usamos esta sintaxis el contenido se trata como html sin mas --}}
                 </div>
             </article>
         </div>

@@ -1,3 +1,6 @@
+<!-- Este componente se encarga del encabezado de todas las páginas
+    
+    Incluye un logotipo, nombre de la web y un enlace vacio para abrir el menú -->
 <header id="header">
     <div class="inner">
 

@@ -1,33 +1,21 @@
+<!-- Página de categoría
+ Utiliza el layout principal y en el slot inserta:
+
+    * Header principal
+    * Wrapper formado por dos divs con las clases main e inner
+    * Encabezado especial de la portada
+    * Un componente tile-grid con los posts del blog-->
 <x-layout>
 
     <!-- Header -->
-    <header id="header">
-        <div class="inner">
-
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">{{config('app.name')}}</span>
-            </a>
-
-            <!-- Nav -->
-            <nav>
-                <ul>
-                    <li><a href="#menu">Menu</a></li>
-                </ul>
-            </nav>
-
-        </div>
-    </header>
+    <x-main-header />
 
     <!-- Main -->
     <div id="main">
         <div class="inner">
             <header>
-                <h1>This is Phantom, a free, fully responsive site<br />
-                    template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
-                <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus
-                    arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros
-                    aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+                <h1>Este es nuestro blog de ejemplo</a>.</h1>
+                <p>Lo hemos construido utilizando <a href="https://laravel.com">Laravel</a></p>
             </header>
             <x-tile-grid :posts="$posts" />
         </div>
