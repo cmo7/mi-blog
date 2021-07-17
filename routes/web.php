@@ -7,7 +7,7 @@ use App\Models\User;
 
 //Post Routes
 Route::get('/', [PostController::class, 'getPosts']);
-Route::get('/post/{slug}', [PostController::class, 'getPostBySlug'] );
+Route::get('/post/{slug}', [PostController::class, 'getPostBySlug']);
 Route::get('/new/post', [PostController::class, 'newPostForm']);
 Route::post('/new/post', [PostController::class, 'newPost']);
 
@@ -23,5 +23,3 @@ Route::get('/user/{id}', function ($id) {
         "user" => User::findOrFail($id),
     ]);
 });
-
-
