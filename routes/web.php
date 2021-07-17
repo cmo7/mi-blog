@@ -1,30 +1,15 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
-use Illuminate\Support\Str;
 
-Route::get('/', function (Request $request) {
-    $search = $request->input('search');
-    $posts = Post::query()
-        ->where('title', 'LIKE', '%' . $search . '%')
-        ->orWhere('content', 'LIKE', '%' . $search . '%')
-        ->get();
-
-    return view('portada', [
-        "posts" => $posts->sortByDesc('created_at')->take(9),
-    ]);
-});
-
-Route::get('/post/{slug}', function ($slug) {
-    $post = Post::where('slug', $slug)->firstOrFail();
-    return view('post', [
-        "post" => $post,
-    ]);
-});
+//Post Routes
+Route::get('/', [PostController::class, 'getPosts']);
+Route::get('/post/{slug}', [PostController::class, 'getPostBySlug'] );
+Route::get('/new/post', [PostController::class, 'newPostForm']);
+Route::post('/new/post', [PostController::class, 'newPost']);
 
 Route::get('/category/{slug}', function ($slug) {
     $category = Category::where('slug', $slug)->firstOrFail();
@@ -39,27 +24,4 @@ Route::get('/user/{id}', function ($id) {
     ]);
 });
 
-Route::get('/new/post', function () {
-    return view('new-post', [
-        "categories" => Category::all(),
-    ]);
-});
 
-Route::post('/new/post', function (Request $request) {
-
-    //Subir la imagen
-    $imageName = time() . '.' . $request->image->extension();
-    $request->image->move(public_path('images'), $imageName);
-
-    //Crear el post
-    $post = new Post;
-    $post->title = $request->input('title');
-    $post->slug = Str::slug($request->input('title'));
-    $post->category_id = $request->input('category');
-    $post->excerpt = substr($request->input('content'), 0, 200);
-    $post->content = $request->input('content');
-    $post->user_id = 1;                                           // TODO
-    $post->image = "/images/$imageName";
-    $post->save();
-    return redirect('/');
-});
