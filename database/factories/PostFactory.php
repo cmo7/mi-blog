@@ -27,7 +27,9 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(),
-            'content' => $this->faker->paragraph()
+            'content' => '<p>' . implode('</p><p> ' , $this->faker->paragraphs(10)) . '</p>',
+            //'image' => $this->faker->image('public/images', 1024, 1024, null, false)
+            'image' => 'https://picsum.photos/1024/1024?random=' . random_int(1, 4000)
         ];
     }
 }

@@ -7,8 +7,8 @@ use App\Models\User;
 
 Route::get('/', function () {
     $posts = Post::all();
-    return view('posts', [
-        "posts" => $posts,
+    return view('portada', [
+        "posts" => $posts->take(9),
     ]);
 });
 
