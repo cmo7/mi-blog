@@ -17,7 +17,11 @@
                 <h1>Este es nuestro blog de ejemplo</a>.</h1>
                 <p>Lo hemos construido utilizando <a href="https://laravel.com">Laravel</a></p>
             </header>
-            <x-tile-grid :posts="$posts" />
+            @if ($posts->count() > 0)
+                <x-tile-grid :posts="$posts" />
+            @else
+                <p>No hay posts que coincidan con tu búsqueda</p>
+            @endif
         </div>
     </div>
 </x-layout>
