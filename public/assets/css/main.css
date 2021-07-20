@@ -3327,3 +3327,19 @@ input, select, textarea {
 			}
 
 		}
+
+
+.flash-message {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	background-color: #585858;
+	color:#f6f6f6;
+	border: 1px solid black;
+	padding: 5px;
+	border-radius: 3px;
+}
+
+.flash-message p {
+	margin: 0;
+}

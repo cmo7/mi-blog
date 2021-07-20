@@ -33,9 +33,23 @@ Desarrollo:
         <nav id="menu">
             <h2>Menu</h2>
 
+            <ul>
+                @guest
+                    <li><a href="/register">Registrarse</a></li>
+                    <li><a href="/login">Login</a></li>
+                @endguest
+                @auth
+                Hola {{auth()->user()->name}}
+                <form action="/logout" method="POST">
+                    @csrf
+                    <input class="button primary small" type="submit" value="Logout">
+                </form>
+                @endauth
+            </ul>
+
             <form action="/" method="get">
-            <input type="text" name="search" id="search" placeholder="Buscar">
-            <input class="button primary small fit" type="submit" value="buscar">
+                <input type="text" name="search" id="search" placeholder="Buscar">
+                <input class="button primary small fit" type="submit" value="buscar">
             </form>
 
             <ul>
@@ -49,7 +63,7 @@ Desarrollo:
 
         <!-- Main -->
 
-            {{ $slot }}
+        {{ $slot }}
 
         <!-- Footer -->
         <footer id="footer">
@@ -96,6 +110,12 @@ Desarrollo:
                 </ul>
             </div>
         </footer>
+
+        @if (session()->has('success'))
+            <div class="flash-message">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
 
     </div>
 
